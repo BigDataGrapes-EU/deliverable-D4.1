@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it spark-geo-worker bash -c "cd /bashes && bash compute-nvdi_ndwi.sh"
+docker exec -it spark-master bash -c "cd /bashes && bash compute-nvdi_ndwi.sh"

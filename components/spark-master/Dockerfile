@@ -1,34 +1,22 @@
-FROM bde2020/spark-master:2.1.0-hadoop2.8-hive-java8
+FROM gettyimages/spark
+# MAINTAINER Vinicius Monteiro de Lira version: 0.1
 
 # copy the xml setting for pydoop
 COPY mapred-site.xml /etc/hadoop/
 
-# MAINTAINER Vinicius Monteiro de Lira version: 0.1
+# conf spark
+COPY spark-env.sh /usr/spark-2.3.1/conf/
 
-# Install python essencials
-
+# Install essential tools
 RUN apt-get update && apt-get install -y python-setuptools python-dev build-essential
+RUN apt-get install ssh procps nano wget git -y
 
-# install pip and jupyter
-RUN easy_install pip && pip install jupyter && jupyter notebook --generate-config
-
-# configure jupyter
-COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
-
-# install pyspark
-RUN pip install pyspark
-RUN pip install findspark
-RUN pip install numpy
-RUN pip install matplotlib
-RUN pip install pydoop
-
-# export PATH=/spark/bin/:$PATH
-ENV PATH /spark/bin/:$PATH
-ENV PYSPARK_DRIVER_PYTHON jupyter
-ENV PYSPARK_DRIVER_PYTHON_OPTS 'notebook'
-ENV PYTHONPATH $SPARK_HOME/python/:$PYTHONPATH
-
+# clone the project
+RUN cd / && git clone https://github.com/geotrellis/geotrellis-landsat-tutorial.git
+# RUN cd /geotrellis-landsat-tutorial/ && ./sbt compile
+RUN cd /geotrellis-landsat-tutorial/data/landsat && ./download-data.sh
 
 EXPOSE 8080
 EXPOSE 7077
-EXPOSE 9999
+EXPOSE 6666
+EXPOSE 4040
