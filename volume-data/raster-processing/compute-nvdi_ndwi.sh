@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # create hdfs directories for input/output
 hadoop fs -mkdir -p hdfs://namenode:8020/demos/ndvi_ndwi/input && hadoop fs -mkdir -p hdfs://namenode:8020/demos/ndvi_ndwi/output
 
