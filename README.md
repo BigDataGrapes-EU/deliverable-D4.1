@@ -47,7 +47,7 @@ To execute this demo, run the following bash command:
 $ ./run-tiling_pyramid.sh
 ```
 
-The PNG of the processed tiles for the different zoom levels can be accessed through a web browser using the port 8001 (http://<server_address>:8001) or in the following HDFS directory.
+The PNG of the processed tiles for the different zoom levels can be accessed through a web browser using the port 8001 (http://SERVER_URL:8001) or in the following HDFS directory.
 
 ```
 $ hadoop fs –ls /demos/ndvi_ndwi/output
@@ -67,13 +67,19 @@ To execute this demo, run the following bash command:
 $ ./run-ndvi_ndwi_computation.sh
 ```
 
-Both the NDVI and the NDWI PNG images can be accessed through a web browser using the port 8002 (http://<server_address>:8002). 
+Both the NDVI and the NDWI PNG images can be accessed through a web browser using the port 8002 (http://SERVER_URL:8002). 
 
 The images can also be accessed through the HDFS in the following directory:
 
 ```
 $ hadoop fs –ls /demos/ndvi_ndwi/output
 ```
+
+## Useful BigDataGrapes Endpoints
+
+* Apache HDFS Namenode: http://SERVER_URL:50070
+* Spark-master: http://SERVER_URL:8080
+* Hue (HDFS File Browser): http://SERVER_URL:8088/home
 
 
 
