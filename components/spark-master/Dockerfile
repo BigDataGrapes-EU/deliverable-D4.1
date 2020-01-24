@@ -24,7 +24,7 @@ RUN apt-get install -y apt-transport-https ca-certificates \
 # clone the project. credits: https://github.com/geotrellis/geotrellis-landsat-tutorial
 RUN cd / && git clone https://github.com/geotrellis/geotrellis-landsat-tutorial.git
 # RUN cd /geotrellis-landsat-tutorial/ && ./sbt compile
-# RUN cd /geotrellis-landsat-tutorial/data/landsat && ./download-data.sh
+RUN cd /geotrellis-landsat-tutorial/data/landsat && ./download-data.sh
 
 ## clone the project. credits: https://github.com/azavea/geotrellis-collections-api-research
 RUN cd / && git clone https://github.com/azavea/geotrellis-collections-api-research.git
